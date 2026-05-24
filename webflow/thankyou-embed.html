@@ -6,7 +6,7 @@
     (https://www.nutribox.rs/giveaway/maj-2026-uspesna-prijava)
   → dodaj Embed element gde želiš da bude kartica → paste sve odavde → Publish.
 
-  ⚠️  Pre publish-a, zameni `[your-api-host]` u CONFIG.apiUrl i CONFIG.dashboardBaseUrl
+  ⚠️  Pre publish-a, zameni `nutribox-giveaway-referral.vercel.app` u CONFIG.apiUrl i CONFIG.dashboardBaseUrl
   sa Vercel deploy URL-om (npr. nutribox-giveaway-referral.vercel.app).
 
   Renderuje zelenu karticu sa "Tvoj lični link", read-only input poljem,
@@ -190,9 +190,9 @@
 (function () {
   var CONFIG = {
     // TODO: Zameni sa Vercel deploy URL-om kad Vuksan deploy-uje:
-    apiUrl: 'https://[your-api-host]/api/signup',
+    apiUrl: 'https://nutribox-giveaway-referral.vercel.app/api/signup',
     webinarUrl: 'https://www.nutribox.rs/giveaway/maj-2026',
-    dashboardBaseUrl: 'https://[your-api-host]'
+    dashboardBaseUrl: 'https://nutribox-giveaway-referral.vercel.app'
     // tagId nije postavljen — Nutribox je giveaway-only (bez Kit/ConvertKit integracije)
   };
 
