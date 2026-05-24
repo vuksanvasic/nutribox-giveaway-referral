@@ -1,0 +1,9 @@
+{
+  "name": "nutribox-giveaway-referral",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nutribox giveaway referral sistem (maj 2026) — Supabase + Vercel + Webflow embed",
+  "engines": {
+    "node": ">=18"
+  }
+}

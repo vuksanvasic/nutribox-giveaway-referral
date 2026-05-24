@@ -1,0 +1,499 @@
+/* Page-level bg matches the form section bg so there is no visible seam
+   between Webflow page background and the embed container. Outside #nb-giveaway
+   intentionally — needed to influence the host page. */
+html, body {
+  background: #fafaf7;
+}
+
+#nb-giveaway {
+  --primary: #317039;
+  --primary-hover: #388041;
+  --primary-soft: #e8f1e9;
+  --accent: #e89a3c;
+  --accent-deep: #d23b3b;
+  --dark: #101a24;
+  --text: #2a3540;
+  --text-soft: #5f6b75;
+  --line: #e6e8ec;
+  --line-strong: #d8dad6;
+  --bg: #fafaf7;
+  --white: #ffffff;
+  --shadow-card: 0 2px 8px -4px rgba(16,26,36,0.06);
+  --shadow-cta: 0 8px 22px -10px rgba(49,112,57,0.5);
+
+  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#nb-giveaway, #nb-giveaway *, #nb-giveaway *::before, #nb-giveaway *::after {
+  box-sizing: border-box;
+}
+
+#nb-giveaway * {
+  font-family: inherit;
+  line-height: inherit;
+}
+
+/* ============ Main + screens ============ */
+
+#nb-giveaway .main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 36px 20px 64px;
+}
+
+#nb-giveaway .wrap {
+  width: 100%;
+  max-width: 600px;
+}
+
+#nb-giveaway .screen {
+  display: none;
+  animation: nb-fadeIn .28s ease;
+}
+
+#nb-giveaway .screen.active { display: block; }
+
+@keyframes nb-fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ Inline progress (above question title) ============ */
+
+#nb-giveaway .progress-inline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+#nb-giveaway .segments-inline {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+}
+
+#nb-giveaway .seg {
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--line);
+  transition: background .25s ease;
+}
+
+#nb-giveaway .seg.done { background: var(--primary); }
+#nb-giveaway .seg.current { background: var(--primary); opacity: .6; }
+
+#nb-giveaway .step-counter {
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-soft);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+#nb-giveaway .step-counter .step-now {
+  color: var(--dark);
+}
+
+#nb-giveaway .step-counter .step-sep {
+  margin: 0 2px;
+  opacity: 0.5;
+}
+
+/* ============ Step head ============ */
+
+#nb-giveaway .step-head {
+  margin-bottom: 28px;
+}
+
+#nb-giveaway h1 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin: 0 0 10px;
+  color: var(--dark);
+}
+
+#nb-giveaway h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--dark);
+}
+
+#nb-giveaway .lead {
+  font-size: 16px;
+  color: var(--text-soft);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ============ Intro screen (flat, no white card) ============ */
+
+#nb-giveaway .intro-block {
+  padding: 56px 0 32px;
+  text-align: center;
+}
+
+#nb-giveaway .intro-headline {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--dark);
+  margin: 0 0 14px;
+}
+
+#nb-giveaway .intro-lead {
+  font-size: 17px;
+  color: var(--text-soft);
+  margin: 0 auto 30px;
+  max-width: 460px;
+  line-height: 1.5;
+}
+
+#nb-giveaway .intro-microcopy {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin: 18px 0 0;
+  font-weight: 500;
+}
+
+/* ============ Option cards (radio) ============ */
+
+#nb-giveaway .options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+#nb-giveaway .opt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: 10px 3px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all .15s ease;
+  box-shadow: var(--shadow-card);
+}
+
+#nb-giveaway .opt:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+#nb-giveaway .opt input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#nb-giveaway .opt-check {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 2px solid var(--line-strong);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .15s ease;
+}
+
+#nb-giveaway .opt-check::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--primary);
+  transform: scale(0);
+  transition: transform .15s ease;
+}
+
+#nb-giveaway .opt input[type="radio"]:checked + .opt-check {
+  border-color: var(--primary);
+}
+
+#nb-giveaway .opt input[type="radio"]:checked + .opt-check::after {
+  transform: scale(1);
+}
+
+#nb-giveaway .opt:has(input[type="radio"]:checked) {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+#nb-giveaway .opt-label {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--dark);
+  letter-spacing: -0.005em;
+}
+
+#nb-giveaway .opt-letter {
+  flex: 0 0 26px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-soft);
+  letter-spacing: 0.05em;
+}
+
+/* Scale 1-5 (Q3) */
+#nb-giveaway .scale {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#nb-giveaway .scale .opt {
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 22px 8px;
+  text-align: center;
+}
+
+#nb-giveaway .scale .opt-check { display: none; }
+
+#nb-giveaway .scale .opt-label {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+#nb-giveaway .scale-hint {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-bottom: 24px;
+  padding: 0 2px;
+}
+
+/* ============ Conditional sub-input ============ */
+
+#nb-giveaway .conditional {
+  display: none;
+  margin-top: -4px;
+  margin-bottom: 24px;
+  animation: nb-fadeIn .22s ease;
+}
+
+#nb-giveaway .conditional.show { display: block; }
+
+#nb-giveaway .conditional label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+
+/* ============ Inputs (contact step) ============ */
+
+#nb-giveaway .field { margin-bottom: 16px; }
+
+#nb-giveaway .field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+
+#nb-giveaway .field label .req { color: var(--accent-deep); }
+
+#nb-giveaway .input {
+  width: 100%;
+  padding: 13px 16px;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--dark);
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: 10px 3px;
+  outline: none;
+  transition: border-color .15s ease;
+  box-shadow: var(--shadow-card);
+}
+
+#nb-giveaway .input:focus { border-color: var(--primary); }
+#nb-giveaway .input.invalid { border-color: var(--accent-deep); }
+
+#nb-giveaway .field-error {
+  display: none;
+  font-size: 12.5px;
+  color: var(--accent-deep);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+#nb-giveaway .field.has-error .field-error { display: block; }
+
+/* ============ intl-tel-input integration (separateDialCode mode) ============ */
+
+#nb-giveaway .iti { width: 100%; display: block; }
+
+#nb-giveaway .iti--show-selected-dial-code .iti__selected-flag {
+  padding: 0 8px 0 14px;
+  border-right: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: 10px 0 0 3px;
+}
+
+#nb-giveaway .iti--show-selected-dial-code .iti__selected-flag:hover,
+#nb-giveaway .iti--show-selected-dial-code .iti__selected-flag:focus {
+  background: var(--primary-soft);
+}
+
+#nb-giveaway .iti--show-selected-dial-code .iti__selected-dial-code {
+  margin-left: 6px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* Override library's default padding to match our input visual size */
+#nb-giveaway .iti--show-selected-dial-code .iti__tel-input {
+  padding-left: 96px;
+}
+
+#nb-giveaway .iti__country-list {
+  border: 1.5px solid var(--line);
+  border-radius: 10px 3px;
+  box-shadow: 0 12px 30px -10px rgba(16,26,36,0.18);
+  font-family: inherit;
+  font-size: 14.5px;
+  max-height: 240px;
+}
+
+#nb-giveaway .iti__country.iti__highlight { background: var(--primary-soft); }
+
+#nb-giveaway .iti__dial-code { color: var(--text-soft); }
+
+/* ============ Buttons / nav ============ */
+
+#nb-giveaway .nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#nb-giveaway .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px 3px;
+  padding: 14px 28px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 15.5px;
+  cursor: pointer;
+  transition: all .18s ease;
+  box-shadow: var(--shadow-cta);
+  letter-spacing: -0.005em;
+}
+
+#nb-giveaway .btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+#nb-giveaway .btn:active { transform: translateY(0); }
+
+#nb-giveaway .btn:disabled {
+  background: var(--line-strong);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+#nb-giveaway .btn.lg {
+  padding: 16px 36px;
+  font-size: 16.5px;
+}
+
+#nb-giveaway .btn.full { width: 100%; }
+
+#nb-giveaway .btn.ghost {
+  background: transparent;
+  color: var(--text);
+  box-shadow: none;
+  border: 1.5px solid var(--line);
+}
+
+#nb-giveaway .btn.ghost:hover {
+  background: var(--white);
+  border-color: var(--line-strong);
+  color: var(--dark);
+}
+
+#nb-giveaway .btn-spinner {
+  display: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-top-color: #fff;
+  border-radius: 999px;
+  animation: nb-spin 0.7s linear infinite;
+}
+
+#nb-giveaway .btn.loading .btn-spinner { display: inline-block; }
+#nb-giveaway .btn.loading .btn-label { opacity: 0.85; }
+
+@keyframes nb-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============ Footer microcopy ============ */
+
+#nb-giveaway .micro-note {
+  font-size: 12.5px;
+  color: var(--text-soft);
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+#nb-giveaway .micro-note a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#nb-giveaway .micro-note a:hover { text-decoration: underline; }
+
+/* ============ Responsive ============ */
+
+@media (max-width: 600px) {
+  #nb-giveaway .main { padding: 28px 16px 56px; }
+  #nb-giveaway h1 { font-size: 24px; }
+  #nb-giveaway .intro-headline { font-size: 28px; }
+  #nb-giveaway .intro-hero { padding: 32px 22px; }
+  #nb-giveaway .btn.lg { padding: 14px 28px; font-size: 15.5px; }
+  #nb-giveaway .progress-inline { gap: 10px; }
+  #nb-giveaway .step-counter { font-size: 11px; }
+}
