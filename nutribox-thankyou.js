@@ -25,10 +25,6 @@
     dashboardBaseUrl: 'https://nutribox-giveaway-referral.vercel.app'
   };
 
-  var SHARE_MSG = function (url) {
-    return 'Prijavi se za Nutribox giveaway i osvoji 28-dnevni plan zdrave ishrane: ' + url;
-  };
-
   var ROOT = null;
   var TOAST = null;
 
@@ -96,7 +92,6 @@
     var greeting = data.firstName ? esc(data.firstName) + ', ' : '';
     var shareUrl = esc(data.shareUrl);
     var dashboardUrl = esc(data.dashboardUrl);
-    var msgEnc = encodeURIComponent(SHARE_MSG(data.shareUrl));
 
     var html =
       '<div class="nb-ref-card">' +
@@ -105,17 +100,6 @@
         '<div class="nb-ref-row">' +
           '<input class="nb-ref-input" id="nb-ref-input" value="' + shareUrl + '" readonly />' +
           '<button class="nb-ref-btn" id="nb-ref-btn" type="button">Kopiraj</button>' +
-        '</div>' +
-        '<div class="nb-ref-share">' +
-          '<a class="nb-ref-share-btn" href="https://wa.me/?text=' + msgEnc + '" target="_blank" rel="noopener">' +
-            '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7 0-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1.1 2.8 1.2 3 .2.2 2.1 3.3 5.1 4.6 1.8.7 2.5.8 3.3.7.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>' +
-            'WhatsApp</a>' +
-          '<a class="nb-ref-share-btn" href="viber://forward?text=' + msgEnc + '" rel="noopener">' +
-            '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 0H12.6c1.5 0 6.3.2 9 2.7 1.6 1.5 2.2 3.8 2.3 6.6.1 2.8.2 8-4.7 9.8h-.1l.1 2.9-3.5-2c-3.6.1-7.3.3-9.5-2-1-1.1-1.7-2.4-2-3.9C4 12.2 3.9 9.7 4.1 7.4 4.4 5.1 5 3.1 6.6 1.7 9 .2 11.4 0 11.4 0zm6.3 8.4c-.2-.4-.6-.6-1-.6-1 0-1.4 1.3-1.6 1.7-.2.4-.3.4-.7.2-1-.6-2-1.5-2.7-2.6-.2-.4-.2-.5.1-.8.4-.4 1.2-1.1.8-1.9-.3-.8-.6-1.5-1.1-2.2-.4-.7-1.1-.5-1.7-.2-1.1.6-1.7 1.7-1.6 2.9 0 .3.1.6.2.9.4 1.2 1 2.3 1.7 3.3.7 1 1.4 1.9 2.3 2.7.9.8 1.9 1.4 3.1 1.8.6.2 1.3.4 2 .3 1.3-.1 2.4-1.2 2.5-2.4 0-.1 0-.2-.1-.3-.2-.4-2.1-1.3-2.2-.8z"/></svg>' +
-            'Viber</a>' +
-          '<a class="nb-ref-share-btn" href="sms:?body=' + msgEnc + '" rel="noopener">' +
-            '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM7 9h10v2H7V9zm10 5H7v-2h10v2zm0-6H7V6h10v2z"/></svg>' +
-            'SMS</a>' +
         '</div>' +
         '<p class="nb-ref-footnote">' +
           'Prati broj prijavljenih preko svog linka na <a href="' + dashboardUrl + '" target="_blank" rel="noopener">svojoj platformi</a>.' +

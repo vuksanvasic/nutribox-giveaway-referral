@@ -3,6 +3,7 @@
   font-weight: 500;
   max-width: 600px;
   margin: 0 auto;
+  padding: 40px 16px;
   color: #2a3540;
 }
 #nb-thankyou, #nb-thankyou *, #nb-thankyou *::before, #nb-thankyou *::after {
@@ -80,40 +81,8 @@
 #nb-thankyou .nb-ref-btn:active { transform: translateY(0); }
 #nb-thankyou .nb-ref-btn.nb-ref-copied { background: #285c2f; }
 
-#nb-thankyou .nb-ref-share {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-#nb-thankyou .nb-ref-share-btn {
-  flex: 1 1 0;
-  min-width: 110px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  background: transparent;
-  color: #2a3540;
-  border: 1.5px solid #e6e8ec;
-  padding: 11px 14px;
-  border-radius: 10px 3px;
-  font-family: inherit;
-  font-size: 13.5px;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.15s;
-}
-#nb-thankyou .nb-ref-share-btn:hover {
-  border-color: #317039;
-  color: #317039;
-  transform: translateY(-1px);
-}
-#nb-thankyou .nb-ref-share-btn svg { width: 16px; height: 16px; flex: 0 0 16px; }
-
 #nb-thankyou .nb-ref-footnote {
+  margin-top: 16px;
   color: #5f6b75;
   font-size: 13px;
   line-height: 1.55;
