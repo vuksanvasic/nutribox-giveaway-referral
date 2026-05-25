@@ -13,7 +13,7 @@
     <script src="https://nutribox-giveaway-referral.vercel.app/nutribox-thankyou.js?v=1"></script>
 
   Skripta injektuje karticu sa "Tvoj lični link", POST-uje na /api/signup
-  i prikazuje share buttons (Copy/WhatsApp/Viber/SMS).
+  i prikazuje "Kopiraj" dugme + link ka ličnoj dashboard stranici.
 */
 
 (function () {
